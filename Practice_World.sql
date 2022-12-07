@@ -73,3 +73,25 @@ WHERE population>(SELECT population FROM world
  AND population<(SELECT population FROM world
                  WHERE name='France');
 ORDER BY name;
+
+--Напишите запрос, который вернёт сумму всего населения из таблицы world. Для этого используйте оператор SUM
+SELECT SUM(population) FROM world;
+
+----Напишите запрос, который вернёт список всех континентов из таблицы. Континенты не должны повторяться. Для этого используйте оператор DISTINCT
+SELECT DISTINCT continent FROM world;
+
+--Напишите запрос, который вернёт сумму ВВП всех стран, где континент - Африка. Для этого используйте оператор SUM
+SELECT SUM (gdp) FROM world
+WHERE continent='Africa';
+
+--Напишите запрос, который вернёт сумму всех стран с площадью больше 1000000. Для этого используйте оператор COUNT
+SELECT COUNT (name) FROM world
+WHERE area > 1000000;
+
+--Напишите запрос, который вернёт сумму населения следующих стран: Франции, Германии и Андорры. Для этого используйте оператор SUM и IN
+SELECT SUM (population) FROM world
+WHERE name IN ('France', 'Germany', 'Andorra');
+
+--Напишите запрос, который вернёт список континентов и сумму стран на каждом из них. Для этого используйте оператор COUNT и GROUP BY
+SELECT continent, COUNT (name) FROM world
+GROUP BY continent;
