@@ -95,3 +95,9 @@ WHERE name IN ('France', 'Germany', 'Andorra');
 --Напишите запрос, который вернёт список континентов и сумму стран на каждом из них. Для этого используйте оператор COUNT и GROUP BY
 SELECT continent, COUNT (name) FROM world
 GROUP BY continent;
+
+--Напишите запрос, который вернёт список континентов, где сумма населения больше 100000000.
+--Для этого используйте оператор GROUP BY и HAVING
+SELECT continent FROM world
+GROUP BY continent
+HAVING SUM(population)>10000000;
