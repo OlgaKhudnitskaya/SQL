@@ -37,3 +37,21 @@ SELECT player, teamid, coach, gtime FROM public.goal
 JOIN public.eteam
 ON (id = teamid)
 WHERE gtime < 10;
+
+--Напишите запрос, который вернёт matchid, mdate и количество голов за каждый матч с участием Польши (POL)
+--Используйте оператор JOIN для таблиц game и goal.
+--Для подсчета голов используйсте оператор COUNT
+SELECT matchid, mdate, COUNT (*) FROM public.game
+JOIN public.goal
+ON id=matchid
+WHERE team1='POL' OR team2='POL'
+GROUP BY matchid, mdate
+
+--Напишите запрос, который вернёт названия matchid, mdate и количество голов за каждый матч, в котором забила гол сборная Германии (GER)
+--Используйте оператор JOIN для таблиц goal и game.
+--Для подсчета голов используйсте оператор COUNT
+SELECT matchid, mdate, COUNT (*) FROM public.game
+JOIN public.goal
+ON id=matchid
+WHERE teamid='GER'
+GROUP BY matchid, mdate
