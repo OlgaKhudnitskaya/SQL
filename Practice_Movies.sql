@@ -43,6 +43,30 @@ JOIN movie
 ON movieid=movie.id
 WHERE title = 'Alien'
 
+--Напишите запрос, который вернёт список всех фильмов, где снимался Harrison Ford
+--Используйте оператор JOIN два раза для таблиц casting и movie, а так же casting и actor.
+SELECT title FROM casting
+JOIN actor
+ON actorid=actor.id
+JOIN movie 
+ON movieid=movie.id
+WHERE name = 'Harrison Ford'
 
+--Напишите запрос, который вернёт список фильмов, где снимался Harrison Ford, но не в главной роли (ord > 1).
+--Используйте оператор JOIN два раза для таблиц casting и movie, а так же casting и actor.
+SELECT title FROM casting
+JOIN actor
+ON actorid=actor.id
+JOIN movie 
+ON movieid=movie.id
+WHERE name = 'Harrison Ford' AND ord > 1
 
+--Напишите запрос, который вернёт названия всех фильмов за 1962 год и актёров, сыгравших главные роли в них (ord = 1).
+--Используйте оператор JOIN два раза для таблиц casting и movie, а так же casting и actor.
+SELECT title, name FROM casting
+JOIN actor
+ON actorid=actor.id
+JOIN movie 
+ON movieid=movie.id
+WHERE yr = 1962  AND ord = 1
 
